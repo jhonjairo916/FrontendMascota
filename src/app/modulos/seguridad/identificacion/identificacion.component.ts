@@ -26,6 +26,7 @@ export class IdentificacionComponent implements OnInit {
       //ok
       alert("datos Correctos");
     },(error:any)=>{
+      console.log(error);
       alert("Datos invalidos.");
     })
   }

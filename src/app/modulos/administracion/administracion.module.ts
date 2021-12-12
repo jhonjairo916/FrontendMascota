@@ -6,6 +6,7 @@ import { CrearAsesorComponent } from './asesor/crear-asesor/crear-asesor.compone
 import { EditarAsesorComponent } from './asesor/editar-asesor/editar-asesor.component';
 import { EliminarAsesorComponent } from './asesor/eliminar-asesor/eliminar-asesor.component';
 import { BuscarAsesorComponent } from './asesor/buscar-asesor/buscar-asesor.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { BuscarAsesorComponent } from './asesor/buscar-asesor/buscar-asesor.comp
   ],
   imports: [
     CommonModule,
-    AdministracionRoutingModule
+    AdministracionRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdministracionModule { }

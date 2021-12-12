@@ -11,11 +11,15 @@ const routes: Routes = [
     component: CrearAsesorComponent
   },
   {
-    path:"editar-asesor",
+    path:"listar-asesores",
+    component: BuscarAsesorComponent
+  },
+  {
+    path:"editar-asesor/:id",
     component: EditarAsesorComponent
   },
   {
-    path:"eliminar-asesor",
+    path:"eliminar-asesor/:id",
     component: EliminarAsesorComponent
   },
   {

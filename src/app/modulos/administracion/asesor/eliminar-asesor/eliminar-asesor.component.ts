@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AsesorService } from 'src/app/servicios/asesor.service';
 
 @Component({
   selector: 'app-eliminar-asesor',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EliminarAsesorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private servicioAsesor: AsesorService) { }
 
   ngOnInit(): void {
   }
-
+  EliminarAsesor(documento: string){
+    
+  }
 }

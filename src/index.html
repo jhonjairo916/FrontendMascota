@@ -14,6 +14,12 @@
     <app-root></app-root>
 
     <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems, options);
+    });
+    </script>
   </body>
 </html>
        

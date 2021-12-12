@@ -1,1 +1,65 @@
-<p>buscar-asesor works!</p>
+<a routerLink="../crear-asesor" class="btn">Nuevo Empleado</a>
+<table class="table responsive">
+    <thead>
+        <tr>
+            <th>
+                Documento
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellidos
+            </th>
+            <th>
+                cargo
+            </th>
+            <th>
+                Area
+            </th>
+            <th>
+                Salario
+            </th>
+            <th>
+                sucursal
+            </th>
+            <th>
+                Editar
+            </th>
+            <th>
+                Eliminar
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of ListadoRegistros">
+            <td>
+                {{p.documento}}
+            </td>
+            <td>
+                {{p.nombre}}
+            </td>
+            <td>
+                {{p.apellidos}}
+            </td>
+            <td>
+                {{p.cargo}}
+            </td>
+            <td>
+                {{p.area}}
+            </td>
+            <td>
+                {{p.salario}}
+            </td>
+            <td>
+                {{p.sucursalId}}
+            </td>
+            <td>
+                <a routerLink="../editar-asesor/{{p.documento}}" class="btn">Editar</a>
+            </td>
+            <td>
+                <a routerLink="../eliminar-asesor/{{p.documento}}"  class="btn">Eliminar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
