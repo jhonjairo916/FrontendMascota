@@ -13,6 +13,11 @@ export class AsesorService {
   {
     return this.http.get<ModeloAsesor[]>(`${this.url}/empleados`);
   }
+  BuscarAsesorPorId(id:string): Observable<ModeloAsesor>
+  {
+    return this.http.get<ModeloAsesor>(`${this.url}/empleados/${id}`);
+  }
+  
   CrearAsesor(asesor: ModeloAsesor): Observable<ModeloAsesor>
   {
     return this.http.post<ModeloAsesor>(`${this.url}/empleados`,asesor,{
@@ -24,7 +29,7 @@ export class AsesorService {
   }
   EditarAsesor(asesor: ModeloAsesor): Observable<ModeloAsesor>
   {
-    return this.http.put<ModeloAsesor>(`${this.url}/empleados`,asesor,{
+    return this.http.put<ModeloAsesor>(`${this.url}/empleados/${asesor.idEmpleado}`,asesor,{
       //Falta crear metodos para obtener token
       headers: new HttpHeaders({
         //'Authorization': 'Bearer '

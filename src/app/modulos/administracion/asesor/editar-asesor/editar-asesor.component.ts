@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModeloAsesor } from 'src/app/modelos/asesor.modelo';
 import { AsesorService } from 'src/app/servicios/asesor.service';
 
@@ -10,8 +10,9 @@ import { AsesorService } from 'src/app/servicios/asesor.service';
   styleUrls: ['./editar-asesor.component.css']
 })
 export class EditarAsesorComponent implements OnInit {
+  id:string="";
   fgValidador: FormGroup = this.fb.group({
-    //'idEmpleado':['',[Validators.required]],
+    'id':['',[Validators.required]],
     'documento':['',[Validators.required]],
     'nombre':['',[Validators.required]],
     'apellidos':['',[Validators.required]],
@@ -22,11 +23,26 @@ export class EditarAsesorComponent implements OnInit {
   });
   constructor(private fb: FormBuilder,
     private servicioAsesor: AsesorService,
-    private router: Router) { }
+    private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params["id"];
+    this.BuscarProducto();
   }
-  GuardarAsesor(){
+  BuscarProducto(){
+    this.servicioAsesor.BuscarAsesorPorId(this.id).subscribe((datos:ModeloAsesor)=>{
+      this.fgValidador.controls["id"].setValue(this.id);
+      this.fgValidador.controls["documento"].setValue(datos.documento);
+      this.fgValidador.controls["nombre"].setValue(datos.nombre);
+      this.fgValidador.controls["apellidos"].setValue(datos.apellidos);
+      this.fgValidador.controls["area"].setValue(datos.area);
+      this.fgValidador.controls["salario"].setValue(datos.salario);
+      this.fgValidador.controls["cargo"].setValue(datos.cargo);
+      this.fgValidador.controls["sucursal"].setValue(datos.sucursalId);
+    });
+  }
+  EditarAsesor(){
+    let id = this.fgValidador.controls['id'].value;
     let documento = this.fgValidador.controls['documento'].value;
     let nombre = this.fgValidador.controls['nombre'].value;
     let apellidos = this.fgValidador.controls['apellidos'].value;
@@ -42,7 +58,8 @@ export class EditarAsesorComponent implements OnInit {
     p.area = area;
     p.salario = salario;
     p.sucursalId = sucursalId;
-    this.servicioAsesor.CrearAsesor(p).subscribe((datos: ModeloAsesor)=>{
+    p.idEmpleado = this.id;
+    this.servicioAsesor.EditarAsesor(p).subscribe((datos: ModeloAsesor)=>{
       alert("Registro exitoso");
       this.router.navigate(["administracion/listar-asesores"]);
     },(error:any)=>{

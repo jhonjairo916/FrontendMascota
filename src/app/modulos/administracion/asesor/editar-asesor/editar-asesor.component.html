@@ -1,1 +1,56 @@
-<p>editar-asesor works!</p>
+<div class="row">
+    <h4>Actualizacion de empleados</h4>
+    <form [formGroup]="fgValidador" (ngSubmit)="EditarAsesor()" >
+      <div class="row">
+          
+        <div class="input-field col s6">
+          <input formControName="id" type="hidden" id="id">
+          <input formControlName="documento"  id="documento" type="text" class="validate">
+          <label for="documento" class="active">No. Documento</label>
+        </div>
+        <div class="input-field col s6">
+          <input formControlName="nombre" id="nombre" type="text" class="validate">
+          <label for="nombre" class="active">Nombre</label>
+        </div>
+        <div class="input-field col s6">
+          <input formControlName="apellidos" id="apellidos" type="text" class="validate">
+          <label for="apellidos" class="active">Apellidos</label>
+        </div>
+        <div class="input-field col s6">
+          <input formControlName="salario" id="salario" type="text" class="validate">
+          <label for="salario" class="active">Salario</label>
+        </div>
+      </div>
+      <div class="row">
+        
+        <div class="input-field col s6  ">
+          <select formControlName="area" id="area" class="browser-default"s>
+          <option value="" disabled selected>Selecciona el area</option>
+          <option value="Ventas">Ventas</option>
+          <option value="Bodega">Bodega</option>
+          </select>
+        </div>
+        <div class="input-field col s6 ">
+          <select formControlName="cargo" id="cargo" class="browser-default">
+          <option value="" disabled selected>Selecciona el cargo</option>
+          <option value="Asesor">Asesor</option>
+          <option value="Vendedor">Vendedor</option>
+          <option value="Veterinario">Veterinario</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+          <div class="input-field col s12">
+              <select formControlName="sucursal" id="sucursal" class="browser-default">
+              <option value="" disabled selected>Sucursal</option>
+              <option value="Manizales">Manizales</option>
+              <option value="Pereira">Pereira</option>
+              <option value="Cali">Cali</option>
+              </select>
+          </div> 
+              <button  class="btn waves-effect waves-light" type="submit" >Actualizar</button>
+      </div>
+      
+    </form>
+  </div>
+
