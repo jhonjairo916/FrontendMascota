@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModeloAsesor } from 'src/app/modelos/asesor.modelo';
 import { AsesorService } from 'src/app/servicios/asesor.service';
 
@@ -9,14 +10,17 @@ import { AsesorService } from 'src/app/servicios/asesor.service';
 })
 export class BuscarAsesorComponent implements OnInit {
 ListadoRegistros: ModeloAsesor[]=[];
-  constructor(private asesorServicio: AsesorService) { }
-
+id:string="";
+constructor(private servicioAsesor: AsesorService, 
+  private router: Router ,private route: ActivatedRoute) { }
   ngOnInit(): void {
     this.ObtenerListadoProductos();
+    this.id = this.route.snapshot.params["id"];
   }
   ObtenerListadoProductos(){
-    this.asesorServicio.ObtenerAsesor().subscribe((datos: ModeloAsesor[])=>{
+    this.servicioAsesor.ObtenerAsesor().subscribe((datos: ModeloAsesor[])=>{
       this.ListadoRegistros = datos;
     })
   }
+ 
 }

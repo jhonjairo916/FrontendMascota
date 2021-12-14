@@ -60,7 +60,7 @@ export class EditarAsesorComponent implements OnInit {
     p.sucursalId = sucursalId;
     p.idEmpleado = this.id;
     this.servicioAsesor.EditarAsesor(p).subscribe((datos: ModeloAsesor)=>{
-      alert("Registro exitoso");
+      alert("Actualizacion exitoso");
       this.router.navigate(["administracion/listar-asesores"]);
     },(error:any)=>{
       console.log(error);
